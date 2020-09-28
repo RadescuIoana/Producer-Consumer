@@ -2,8 +2,8 @@ Radescu Ioana
 
 # Marketplace
 
-	This project implements a Marketplace which is used by multiple producers in order to sell their products 
-	and by multiple consumers that are looking to buy the available products.
+	This project implements a Marketplace which is used by multiple producers in order to sell their
+	products and by multiple consumers that are looking to buy the available products.
 
 
 # CONSUMER
