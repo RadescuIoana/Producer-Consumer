@@ -44,23 +44,26 @@ Radescu Ioana
 	to prevent other threads from trying to modify the dictionary at that moment. After getting the producer_id, we 
 	will create an entry in the producers dictionary for this id by building an empty list.
 
-	To publish a poduct we will check if the given producer_id is registered. If true, we will check if there is any more space 
-	in the product list associated with this producer. If true, we will add the product to the product list of this producer.
+	To publish a poduct we will check if the given producer_id is registered. If true, we will check if there is any more
+	space in the product list associated with this producer. If true, we will add the product to the product list of 
+	this producer.
 
-	In order to create a new cart a cart_id will be obtained by geting the size of the carts dictionary(same as for producers). 
-	In order to do this, a lock will be used to prevent other threads from trying to modify the dictionary at that moment. 
-	After getting the cart_id, we will create an entry in the carts dictionary for this id by building an empty list. Each element 
-	of this list will be a dictionary with the keys "product" and "producer". This way, for each product we will know the producer.
+	In order to create a new cart a cart_id will be obtained by geting the size of the carts dictionary(same as for
+	producers). In order to do this, a lock will be used to prevent other threads from trying to modify the dictionary
+	at that moment. 
+	After getting the cart_id, we will create an entry in the carts dictionary for this id by building an empty list.
+	Each element of this list will be a dictionary with the keys "product" and "producer". This way, for each product 
+	we will know the producer.
 
-	When adding a product to a cart we first check if the given cart_id is a key in the carts dictionary. If yes, we check if the 
-	product is found in any of the product lists of the registered producers. If found, a new dictionary with the keys "product" 
-	and "producers" is created and added to the list of products from the given cart and, also, the product is removed from the 
-	product list of the producer. To ensure the proper functioning of the function, we place the adding and renmoving part in 
-	try except block.
+	When adding a product to a cart we first check if the given cart_id is a key in the carts dictionary. If yes, we
+	check if the product is found in any of the product lists of the registered producers. If found, a new dictionary
+	with the keys "product" and "producers" is created and added to the list of products from the given cart and, 
+	also, the product is removed from the product list of the producer. To ensure the proper functioning of the 
+	function, we place the adding and removing part in a try except block.
 
-	To remove a product from ac cart we check if the given cart_id is a key in the carts dictionary. If yes, we check if any of 
-	the dictionaries in this list have the given product in their "product" field. If found, we remove the dictionary from the 
-	list and we add the product back to its producer's list of products.
+	To remove a product from ac cart we check if the given cart_id is a key in the carts dictionary. If yes, we check
+	if any of the dictionaries in this list have the given product in their "product" field. If found, we remove the
+	dictionary from the list and we add the product back to its producer's list of products.
 
 	When placing an order, we create a list of all the values found in the "product" fields of the dictionaries from the 
 	list associated to the given cart_id.
