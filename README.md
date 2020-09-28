@@ -1,8 +1,11 @@
-Radescu Ioana - 333CB
-Tema1 ASC - Marketplace
+Radescu Ioana
+
+# Marketplace
+
+	This project implements a Marketplace which is used by multiple producers in order to sell their products and by multiple consumers that are looking to buy the available products.
 
 
-		CONSUMER
+# CONSUMER
 
 	Each cosumer has a list of add an remove operations, a name, a reference to the marketplace, a retry_wait_time, a list of products that he buys and a list of cart ids.
 	To build the list of cart ids the function new_cart is called and the id received is added to the list.
@@ -14,7 +17,7 @@ Tema1 ASC - Marketplace
 	After all the commands are executed, the consumer will call the function place_order on every cart in the cart ids list in order to build the list of items he bought.
 
 
-		PRODUCER
+# PRODUCER
 
 	Each producer has a list of products to be produced, a reference to the marketplace, a republish_wait_time and a producer_id.
 	To get the producer id, the function register_producer is called.
@@ -22,7 +25,7 @@ Tema1 ASC - Marketplace
 	The producer will continuously try to publish the products from the products list in the quantity specified. If the publishing succeeds, he will wait for time given in the list of products, if it fails, he will wait for republish_wait_time and will try again.
 
 
-		MARKETPLACE
+# MARKETPLACE
 
 	Each marketplace has a queue_size_per_producer, a dictionary of producers, a disctionary of carts and two locks: one for the producers dictionary and one for the carts.
 
